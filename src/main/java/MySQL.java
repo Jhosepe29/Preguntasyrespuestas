@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class MySQL {
 
-     Logger escribirEnConsola = Logger.getLogger(MySQL.class) ;
+    Logger escribirEnConsola = Logger.getLogger(MySQL.class) ;
 
 
 
@@ -45,14 +45,15 @@ public class MySQL {
     final PrintStream PRINT_STREAM = new PrintStream(System.out);
 
 
-// consulta una pregunta aleatoria  a la base de datos
-    public String getpregunta (String idRandom) {
+
+
+    public String getpregunta (int idRandom) {
 
         String query = "SELECT * FROM preguntas_respuestas.preguntas WHERE id = ?";
         ResultSet rs;
         String salidaConsulta= "";
         try (PreparedStatement ps = CONNECTION.prepareStatement(query)) {
-            ps.setInt(1, Integer.parseInt(idRandom));
+            ps.setInt(1, idRandom);
             rs = ps.executeQuery();
 
             if(rs.next()) {
@@ -61,6 +62,7 @@ public class MySQL {
 
                 salidaConsulta = pregunta;
                 escribirEnConsola.info(pregunta);
+            salidaConsulta = rs.getString("pregunta");
 
 
             }
