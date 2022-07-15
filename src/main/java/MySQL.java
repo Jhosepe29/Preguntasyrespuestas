@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class MySQL {
 
-     Logger escribirEnConsola = Logger.getLogger(MySQL.class) ;
+    Logger escribirEnConsola = Logger.getLogger(MySQL.class) ;
 
 
 
@@ -46,15 +46,15 @@ public class MySQL {
 
 
 
-    public String getpregunta (String idRandom) {
+    public String getpregunta (int idRandom,Connection conector) {
 
         String query = "SELECT * FROM preguntas_respuestas.preguntas WHERE id = ?";
         ResultSet rs;
         String salidaConsulta= "";
-        try (PreparedStatement ps = CONNECTION.prepareStatement(query)) {
-            ps.setInt(1, Integer.parseInt(idRandom));
+        try (PreparedStatement ps = conector.prepareStatement(query)) {
+            ps.setInt(1, idRandom);
             rs = ps.executeQuery();
-            salidaConsulta = rs.getString("preguntas");
+            salidaConsulta = rs.getString("pregunta");
 
 
         } catch (SQLException e) {
