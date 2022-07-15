@@ -45,7 +45,7 @@ public class MySQL {
     final PrintStream PRINT_STREAM = new PrintStream(System.out);
 
 
-
+// consulta una pregunta aleatoria  a la base de datos
     public String getpregunta (String idRandom) {
 
         String query = "SELECT * FROM preguntas_respuestas.preguntas WHERE id = ?";
@@ -54,14 +54,22 @@ public class MySQL {
         try (PreparedStatement ps = CONNECTION.prepareStatement(query)) {
             ps.setInt(1, Integer.parseInt(idRandom));
             rs = ps.executeQuery();
-            salidaConsulta = rs.getString("preguntas");
+
+            if(rs.next()) {
+                String salidaConsult = rs.getString("id");
+                String pregunta = rs.getString("pregunta");
+
+                salidaConsulta = pregunta;
+                escribirEnConsola.info(pregunta);
 
 
+            }
         } catch (SQLException e) {
 
             escribirEnConsola.info(e);
         }
         return salidaConsulta;
+
     }
 
 
