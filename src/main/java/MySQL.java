@@ -50,19 +50,18 @@ public class MySQL {
     public String getpregunta (int idRandom) {
 
         String query = "SELECT * FROM preguntas_respuestas.preguntas WHERE id = ?";
-        ResultSet rs;
+        ResultSet resultadoQuery;
         String salidaConsulta= "";
-        try (PreparedStatement ps = CONNECTION.prepareStatement(query)) {
-            ps.setInt(1, idRandom);
-            rs = ps.executeQuery();
+        try (PreparedStatement preParacionQuery = CONNECTION.prepareStatement(query)) {
+            preParacionQuery.setInt(1, idRandom);
+            resultadoQuery = preParacionQuery.executeQuery();
 
-            if(rs.next()) {
-                String salidaConsult = rs.getString("id");
-                String pregunta = rs.getString("pregunta");
+            if(resultadoQuery.next()) {
+                String pregunta = resultadoQuery.getString("pregunta");
 
                 salidaConsulta = pregunta;
-                escribirEnConsola.info(pregunta);
-            salidaConsulta = rs.getString("pregunta");
+                //escribirEnConsola.info(pregunta);
+           // salidaConsulta = resultadoQuery.getString("pregunta");
 
 
             }
@@ -73,6 +72,35 @@ public class MySQL {
         return salidaConsulta;
 
     }
+    public String getOpciones (int idpregunta) {
+
+        String query = "SELECT * FROM preguntas_respuestas.opciones_respuesta  WHERE idpregunta = ?";
+        ResultSet resultadoQuery;
+        String salidaConsulta= "";
+        try (PreparedStatement preParacionQuery = CONNECTION.prepareStatement(query)) {
+            preParacionQuery.setInt(1, idpregunta);
+            resultadoQuery = preParacionQuery.executeQuery();
+
+            while (resultadoQuery.next()) {
+                String letra = resultadoQuery.getString("letra");
+                String textpOpcion= resultadoQuery.getString("descripción");
+                String respuestaCorrescta = resultadoQuery.getString("respuestacorrecta");
+
+                salidaConsulta += letra+"."+textpOpcion+respuestaCorrescta+"¡";
+                //escribirEnConsola.info(salidaConsulta);
+                // salidaConsulta = resultadoQuery.getString("pregunta");
+
+
+            }
+        } catch (SQLException e) {
+
+            escribirEnConsola.info(e);
+        }
+        return salidaConsulta;
+
+    }
+
+
 
 
 

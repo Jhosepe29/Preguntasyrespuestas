@@ -27,16 +27,6 @@ public class main {
 
     public static void main(String[] args) {
 
-     MySQL conection = new MySQL();
-
-        try {
-            conection.getConnection();
-            escribirEnConsola.info("pa saber que pasa"+conection.getpregunta(1));
-        } catch (Exception e) {
-            escribirEnConsola.info("Error en "+ e);
-        }
-        
-        conection.getpregunta(4);
 
 
     }
