@@ -9,8 +9,10 @@ public class Pregunta {
     public static Logger escribirEnConsola = Logger.getLogger(Pregunta.class) ;
 
 
+    public  Pregunta(){
 
-    public Pregunta(String textodelaPregunta, OpcionesdeRespuesta opcionesdeRespuesta, Integer niveldelJuego) {
+    }
+    public  Pregunta(String textodelaPregunta, OpcionesdeRespuesta opcionesdeRespuesta, Integer niveldelJuego) {
         this.textodelaPregunta = textodelaPregunta;
         this.opcionesdeRespuesta = opcionesdeRespuesta;
         this.niveldelJuego = niveldelJuego;
@@ -32,13 +34,13 @@ public class Pregunta {
         Random idAleatorio = new Random();
         return  idAleatorio.nextInt(topeMaximo + topeMinimo) + topeMinimo;
     }
-    public Pregunta GeneradordePreguntas(int idPregunta,int niveljuego){
+    public static Pregunta GeneradordePreguntas(int idPregunta,Integer niveljuego){
         MySQL conection = new MySQL();
         String preguntaRetornada="";
-        String[] opcionesRespuesta;
+        String[] opcionesRespuesta = new String[4];
         String[] respuestas;
-        String respuestaCorrecta;
-
+        String respuestaCorrecta = "";
+        int indice = 0;
         try {
             preguntaRetornada = conection.getpregunta(idPregunta);
 
@@ -55,15 +57,15 @@ public class Pregunta {
                     opcion.replace("1","");
                 }
                 opcion.replace("0","");
-                op
+                opcionesRespuesta[indice] = opcion;
             }
 
         }catch (Exception e) {
             escribirEnConsola.info("Error en "+ e);
         }
-        OpcionesdeRespuesta opcionesdelapregunta = new OpcionesdeRespuesta()
+        OpcionesdeRespuesta opcionesdelapregunta = new OpcionesdeRespuesta(opcionesRespuesta[0],opcionesRespuesta[1],opcionesRespuesta[2],opcionesRespuesta[3],respuestaCorrecta );
 
-        return new Pregunta()
+        return new Pregunta(preguntaRetornada,opcionesdelapregunta,niveljuego);
     }
 
 
