@@ -1,4 +1,6 @@
-public class Jugador {
+import java.util.Scanner;
+
+public class Jugador extends EscribirEnConsola {
     private String idJugador;
     private String nombreJugador;
     private Integer Puntos;
@@ -32,4 +34,14 @@ public class Jugador {
     public void setPuntos(Integer puntos) {
         Puntos = puntos;
     }
+
+    public Jugador CrearJugador(String idJugador){
+        Scanner entradaConsola = new Scanner(System.in);
+        super.getEscribir().info("Ingrese su nombre: ");
+        String nombreJugador = entradaConsola.nextLine();
+
+        return new Jugador(idJugador,nombreJugador,0);
+
+    }
+    
 }

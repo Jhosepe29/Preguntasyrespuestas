@@ -39,6 +39,7 @@ public class Pregunta {
         String preguntaRetornada="";
         String[] opcionesRespuesta = new String[4];
         String[] respuestas;
+        String[] opcionesRespuestaTemporal = new String[4];
         String respuestaCorrecta = "";
         int indice = 0;
         try {
@@ -48,21 +49,15 @@ public class Pregunta {
             escribirEnConsola.info("Error en "+ e);
         }
         try{
-            String[] opcionesRespuestaTemporal = (conection.getOpciones(idPregunta)).split("¡");
-            for (String opcion:opcionesRespuestaTemporal) {
-                int index = opcion.length();
-                 char letra = opcion.charAt(index);
-                if(letra == '1'){
-                    respuestaCorrecta = ""+opcion.charAt(0);
-                    opcion.replace("1","");
-                }
-                opcion.replace("0","");
-                opcionesRespuesta[indice] = opcion;
-            }
+            opcionesRespuestaTemporal = (conection.getOpciones(idPregunta)).split("¡");
+
+
 
         }catch (Exception e) {
             escribirEnConsola.info("Error en "+ e);
         }
+        opcionesRespuesta = opcionesRespuestaTemporal;
+        respuestaCorrecta = conection.getRespuestaCorrecta();
         OpcionesdeRespuesta opcionesdelapregunta = new OpcionesdeRespuesta(opcionesRespuesta[0],opcionesRespuesta[1],opcionesRespuesta[2],opcionesRespuesta[3],respuestaCorrecta );
 
         return new Pregunta(preguntaRetornada,opcionesdelapregunta,niveljuego);

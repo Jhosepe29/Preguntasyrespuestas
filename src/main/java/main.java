@@ -34,19 +34,20 @@ public class main {
     String opcionesRespuestaC = pregunta.getOpcionesdeRespuesta().getOpcionC();
     String opcionesRespuestaD = pregunta.getOpcionesdeRespuesta().getOpcionD();
 
-    return textoPregunta + "\n" +   opcionesRespuestaA + "\n"+  opcionesRespuestaB +"\n"+
-            "\n"+ opcionesRespuestaC +"\n"+ opcionesRespuestaD + "\n"+ "escoge la opcion que considere correcta";
-
-
-
+    return "\n"+"******************************************************"+"\n\t"+textoPregunta + "\n\n" +   opcionesRespuestaA + "\n"+  opcionesRespuestaB +"\n"+ opcionesRespuestaC +"\n"+ opcionesRespuestaD + "\n"+ "escoge la opcion que considere correcta"+"\n"+"******************************************************";
 
     }
+
+
     public static void main(String[] args) {
         Pregunta pregunta = new Pregunta();
-      int idRandom = pregunta.generadorRandomIdPregunta(6,1);
-      pregunta = Pregunta.GeneradordePreguntas(idRandom, 1);
+        Scanner entradaConsola = new Scanner(System.in);
+
+        int idRandom = pregunta.generadorRandomIdPregunta(6,1);
+        pregunta = Pregunta.GeneradordePreguntas(idRandom, 1);
 
         escribirEnConsola.info(mostrarPreguntas(pregunta));
+        escribirEnConsola.info(pregunta.getOpcionesdeRespuesta().getRespuestaCorrectas());
 
     }
 }

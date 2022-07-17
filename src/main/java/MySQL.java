@@ -10,6 +10,15 @@ public class MySQL {
     Logger escribirEnConsola = Logger.getLogger(MySQL.class) ;
 
 
+    public String respuestaCorrecta;
+
+    public String getRespuestaCorrecta() {
+        return respuestaCorrecta;
+    }
+
+    public void setRespuestaCorrecta(String respuestaCorrecta) {
+        this.respuestaCorrecta = respuestaCorrecta;
+    }
 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
@@ -84,9 +93,12 @@ public class MySQL {
             while (resultadoQuery.next()) {
                 String letra = resultadoQuery.getString("letra");
                 String textpOpcion= resultadoQuery.getString("descripción");
-                String respuestaCorrescta = resultadoQuery.getString("respuestacorrecta");
+                int respuestaCorrescta = resultadoQuery.getInt("respuestacorrecta");
+                if(respuestaCorrescta==1){
+                    this.setRespuestaCorrecta(letra);
+                }
 
-                salidaConsulta += letra+"."+textpOpcion+respuestaCorrescta+"¡";
+                salidaConsulta += letra+"."+textpOpcion+"¡";
                 //escribirEnConsola.info(salidaConsulta);
                 // salidaConsulta = resultadoQuery.getString("pregunta");
 
