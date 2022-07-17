@@ -10,6 +10,9 @@ public class Jugador extends EscribirEnConsola {
         this.nombreJugador = nombreJugador;
         Puntos = puntos;
     }
+    public Jugador(){
+
+    }
 
     public String getIdJugador() {
         return idJugador;

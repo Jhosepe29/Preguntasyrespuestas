@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class main {
     public static Logger escribirEnConsola = Logger.getLogger(main.class) ;
+    static Integer idJugador = 1;
 
     public static String menu(){
         Scanner in = new Scanner(System.in);
@@ -38,16 +39,35 @@ public class main {
 
     }
 
+public static   boolean validarRespuesta (String respuesta , Pregunta pregunta, Jugador jugador,Integer nivel){
+        if (respuesta.equalsIgnoreCase(pregunta.getOpcionesdeRespuesta().getRespuestaCorrectas())){
 
+            escribirEnConsola.info("respuesta correcta");
+            puntos(nivel,jugador);
+            return true ;
+        }
+        escribirEnConsola.info("respuesta incorrecta");
+        return false;
+}
+public static void puntos(Integer nivel,Jugador jugador ){
+
+        Integer puntosObtenidos = (100*nivel);
+        Integer puntosActuales = jugador.getPuntos();
+
+        jugador.setPuntos(puntosActuales + puntosObtenidos);
+}
     public static void main(String[] args) {
+
         Pregunta pregunta = new Pregunta();
         Scanner entradaConsola = new Scanner(System.in);
-
         int idRandom = pregunta.generadorRandomIdPregunta(6,1);
         pregunta = Pregunta.GeneradordePreguntas(idRandom, 1);
-
         escribirEnConsola.info(mostrarPreguntas(pregunta));
         escribirEnConsola.info(pregunta.getOpcionesdeRespuesta().getRespuestaCorrectas());
+
+        Jugador jugador = new Jugador();
+        jugador = jugador.CrearJugador(idJugador.toString());
+
 
     }
 }
