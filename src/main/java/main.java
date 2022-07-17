@@ -57,6 +57,7 @@ public static void puntos(Integer nivel,Jugador jugador ){
         jugador.setPuntos(puntosActuales + puntosObtenidos);
 }
     public static void main(String[] args) {
+        MySQL conection = new MySQL();
         Scanner entradaConsola = new Scanner(System.in);
         Jugador jugador = new Jugador();
         Pregunta pregunta = new Pregunta();
@@ -79,19 +80,24 @@ public static void puntos(Integer nivel,Jugador jugador ){
                                 if(validarRespuesta(respuesRonda,pregunta,jugador,nivelJuego)){
                                     if(nivelJuego==5){
                                         escribirEnConsola.info("Ganaste el juego");
-                                        //cargardatos a la base de datos Inser tabla historico
+                                        conection.CargarHistoricoUsuario(jugador);
                                     }
                                 }else{
                                     escribirEnConsola.info("El juego termino");
 
-                                    // inser taba historico
+                                    conection.CargarHistoricoUsuario(jugador);
                                     break;
                                 }
 
 
                             }
                      break;
-                 case "2": // hacer select de tabla historico
+                 case "2":
+                     String respuestaHistorico = conection.getHistorico();
+                     String  [] arrayHitorico = respuestaHistorico.split("¡");
+                     for (int i = 0; i < arrayHitorico.length; i++ ){
+                         escribirEnConsola.info(arrayHitorico[i]);
+                     }
                      break;
                  case "3": bandera = false;
                         break;

@@ -110,11 +110,72 @@ public class MySQL {
         }
         return salidaConsulta;
 
+
+
     }
 
 
 
+    public void CargarHistoricoUsuario(Jugador jugador) {
+
+        String query = "INSERT INTO   preguntas_respuestas.historicousuario (nombreJugador,puntos) VALUES(?,?)";
+
+        try (PreparedStatement ps = CONNECTION.prepareStatement(query)) {
+
+            ps.setString(1,jugador.getNombreJugador());
+            ps.setInt(2,jugador.getPuntos());
+            ps.executeUpdate();
+            escribirEnConsola.info("CONTACT CREATED SUCCESSFULLY");
+        }
+        catch (SQLException e) {
+            escribirEnConsola.info(e);
+        }
+    }
+
+    /* @Override
+    public void historicoUsuarios(Jugador jugador)  {
+        String query = "SELECT * FROM charactersprofile";
+        ResultSet rs;
+
+        try (PreparedStatement ps = CONNECTION.prepareStatement(query)) {
+
+            PRINT_STREAM.printf("%-6s%-6s%-20s", "id", "nombreJugador", "puntos");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                PRINT_STREAM.printf("%-6s%-6s%-20s%-20s%n", rs.getInt("id"), rs.getInt("idApi"), rs.getString("name"), rs.getString("description"));
+            }
+
+        } catch (SQLException e) {
+            escribirEnConsola.info(e);
+        }
+    }
+    */
+
+    public String getHistorico() {
+
+        String query = "SELECT * FROM preguntas_respuestas.historicousuario ";
+        ResultSet resultadoQuery;
+        String salidaConsulta= "";
+        try (PreparedStatement preParacionQuery = CONNECTION.prepareStatement(query)) {
+
+            resultadoQuery = preParacionQuery.executeQuery();
+
+            while (resultadoQuery.next()) {
+                String nombreJugador = resultadoQuery.getString("nombreJugador");
+                String puntos = resultadoQuery.getString("puntos");
 
 
+                salidaConsulta += "Nombre: "+nombreJugador+" Puntaje: "+puntos+"¡";
+
+
+
+            }
+        } catch (SQLException e) {
+
+            escribirEnConsola.info(e);
+        }
+        return salidaConsulta;
+
+    }
 
 }
