@@ -30,7 +30,7 @@ public class Pregunta {
         return niveldelJuego;
     }
 
-    public int generadorRandomIdPregunta(int topeMaximo,int topeMinimo){
+    public int generadorRandomIdPregunta(Integer topeMaximo,Integer topeMinimo){
         Random idAleatorio = new Random();
         return  idAleatorio.nextInt(topeMaximo + topeMinimo) + topeMinimo;
     }
