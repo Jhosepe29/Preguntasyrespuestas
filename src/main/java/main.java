@@ -66,7 +66,7 @@ public static void puntos(Integer nivel,Jugador jugador ){
              switch (opcionmenu){
                  case "1":  jugador = jugador.CrearJugador(idJugador.toString());
                             idJugador++;
-                            Integer topeMaximo = 6;
+                            Integer topeMaximo = 5;
                             Integer topeMinimo = 1;
                             String respuesRonda;
                            for (int nivelJuego = 1; nivelJuego<6;nivelJuego++){

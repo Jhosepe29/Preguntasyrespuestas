@@ -1,13 +1,11 @@
 use  preguntas_respuestas;
-CREATE TABLE datos_usuario (
 
-
+CREATE TABLE historicousuario (
 	id int NOT NULL AUTO_INCREMENT, 
     nombreJugador nvarchar (300) Not Null,
     puntos int not null,
     PRIMARY KEY(id)
 );
-use  preguntas_respuestas;
 
 CREATE TABLE preguntas
 (
@@ -15,26 +13,6 @@ CREATE TABLE preguntas
 		 pregunta nvarchar (300) Not null,
 		Idnivel int Not null,
          PRIMARY KEY(id)
-);
-
-use  preguntas_respuestas;
-
-create table preguntas_vistas
-(
-		id int NOT NULL AUTO_INCREMENT,
-		Idjuego int Not Null,
-		Idpreguntas int Not Null,	
-		PRIMARY KEY(id)
-		
-) ;
-
-create Table nivel
-(
-				id int NOT NULL AUTO_INCREMENT,
-
-		descripcion nvarchar (500) not null,
-        		PRIMARY KEY(id)
-
 );
 
 create table opciones_respuesta
@@ -49,39 +27,6 @@ create table opciones_respuesta
 
 );
 
-create table forma_salida_del_juego
-(
-						id int NOT NULL AUTO_INCREMENT,
-
-		descripcion nvarchar (800) not null,
-        PRIMARY KEY(id)
-        
-);
-
-create table historico
-(
-				id int NOT NULL AUTO_INCREMENT,
-		iddatos_usuario int not null,
-		idnivel int not null,
-		idpreguntas int not null,
-		idopciones_respuesta int  null,
-		idforma_salida_del_juego int null,
-		puntos_acumulados int not null,
-		idjuego int not null,
-        PRIMARY KEY(id) 
-	
-);
-
-use  preguntas_respuestas;
-
-INSERT INTO nivel (Id, descripcion)
-VALUES ('1', 'Nivel 1'),
-  ( '2', 'Nivel 2' ),
- ( '3', 'Nivel 3' ),
- ( '4', 'Nivel 4' ),
- ( '5', 'Nivel 5' );
-
-use  preguntas_respuestas;
 
 INSERT preguntas (Id, pregunta, Idnivel)
 VALUES
@@ -111,7 +56,7 @@ VALUES
  (24, '¿Cual es la mejor forma de consumir librerías de terceros?' , 5),
  (25, 'No sirve Do\ While para iterar sobre una lista de elementos' , 5);
 
-use  preguntas_respuestas;
+
 INSERT opciones_respuesta (id, Idpregunta, IDnivel,letra, descripción, respuestacorrecta)
 VALUES
 (1, 1, 1, 'a' , 'Son las palabras que usamos para definir variables', 0),

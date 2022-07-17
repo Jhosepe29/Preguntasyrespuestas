@@ -31,8 +31,14 @@ public class Pregunta {
     }
 
     public int generadorRandomIdPregunta(Integer topeMaximo,Integer topeMinimo){
-        Random idAleatorio = new Random();
-        return  idAleatorio.nextInt(topeMaximo + topeMinimo) + topeMinimo;
+        int aleatorio=0;
+        do {
+            aleatorio = ((int) (Math.random() * topeMaximo));
+           if (aleatorio >= topeMinimo) {
+               return aleatorio;
+           }
+       }while (aleatorio<=topeMinimo);
+        return aleatorio;
     }
     public static Pregunta GeneradordePreguntas(int idPregunta,Integer niveljuego){
         MySQL conection = new MySQL();
