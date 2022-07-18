@@ -14,9 +14,9 @@ Descripción:
 
 Datos tectnicos.
 
-*Desarrollado en lenguaje: Java 18
-*IDE : Intellj ultimate
-*Proyecto: Mave.
+* Desarrollado en lenguaje: Java 18
+* IDE : Intellj ultimate
+* Proyecto: Mave.
 
 Más Información.
 * https://www.youtube.com/watch?v=YHrzQeJqMrw
