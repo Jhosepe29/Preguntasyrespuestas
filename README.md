@@ -10,7 +10,7 @@ Descripción:
 * Este es un software desarrollado bajo las tres c.
 * Compromiso.
 * Calidez.
-* Cansancio.
+* Calidad.
 
 Datos tectnicos.
 
