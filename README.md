@@ -1,5 +1,8 @@
 # Preguntasyrespuestas
 
+@author Jhon Sebastian Peñate Peña
+@author Jorge Anderson Montoya Orjuela
+
 Descripción:
 
 * Preguntasyrespuestas es un divertido juego de preguntas, por niveles de dificultad
@@ -19,7 +22,7 @@ Datos tectnicos.
 * Proyecto: Mave.
 * Base de datos: MySQL
 *
-* En la carpeta SQL se Encuentra el Scrit para la creación de las tablas necesarias
+* En la carpeta SQL se Encuentra el Script para la creación de la base de datos y  las tablas necesarias
 * para la correcta ejecución del software.
 
 
