@@ -1,3 +1,5 @@
+create database preguntas_respuestas;
+
 use  preguntas_respuestas;
 
 CREATE TABLE historicousuario (
