@@ -17,6 +17,11 @@ Datos tectnicos.
 * Desarrollado en lenguaje: Java 18
 * IDE : Intellj ultimate
 * Proyecto: Mave.
+* Base de datos: MySQL
+*
+* En la carpeta SQL se Encuentra el Scrit para la creación de las tablas necesarias
+* para la correcta ejecución del software.
+
 
 Más Información.
 * https://www.youtube.com/watch?v=YHrzQeJqMrw
